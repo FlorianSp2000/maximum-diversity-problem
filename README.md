@@ -1,6 +1,16 @@
 # Heuristic Approach towards the Maximum Diversity Problem
 
-This project implements a **Greedy Randomized Adaptive Search Procedure (GRASP)** for solving combinatorial optimization problems. The framework is designed to allow experimentation with different configurations, parameter tuning strategies, and enhancements to improve algorithmic performance. 
+This project implements a **Greedy Randomized Adaptive Search Procedure (GRASP)** in combination with Metaheuristics such as Path Relinking and Tabu Search for solving a combinatorial optimization problem. The framework is designed to allow experimentation with different configurations, parameter tuning strategies, and enhancements to improve algorithmic performance.
+
+## Problem Definition
+The Maximum Diversity Problem (MDP) can be formulated as follows:
+
+Given a set N = {1, ..., n} of elements and distances d(i,j) between each pair of elements i,j ∈ N, select a subset S ⊆ N of size m that maximizes the sum of distances between all pairs of selected elements:
+
+maximize   ∑(i,j)∈S d(i,j)  
+subject to:  
+|S| = m  
+S ⊆ N
 
 ## Features
 - **Constructive Phase**: Generates initial feasible solutions based on a greedy randomized approach.
