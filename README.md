@@ -4,13 +4,12 @@ This project implements a **Greedy Randomized Adaptive Search Procedure (GRASP)*
 
 ## Problem Definition
 The Maximum Diversity Problem (MDP) can be formulated as follows:
+  
+Given a set $N = \{1, ..., n\}$ of elements and distances $d(i,j)$ between each pair of elements $i,j \in N$, select a subset $S \subseteq N$ of size $m$ that maximizes the sum of distances between all pairs of selected elements:
+  
+maximize $\sum_{(i,j)\in S} d(i,j)$
 
-Given a set N = {1, ..., n} of elements and distances d(i,j) between each pair of elements i,j ∈ N, select a subset S ⊆ N of size m that maximizes the sum of distances between all pairs of selected elements:
-
-maximize   ∑(i,j)∈S d(i,j)  
-subject to:  
-|S| = m  
-S ⊆ N
+subject to: $|S| = m$, $S \subseteq N$
 
 ## Features
 - **Constructive Phase**: Generates initial feasible solutions based on a greedy randomized approach.
