@@ -1,19 +1,22 @@
 from constructives import cgrasp
-from localsearch import lsbestimp
+from localsearch import lsbestimp, tabu_search
 import time
 import random
 
-def execute(inst, iters, alpha):
+def execute(inst, iters, alpha, algorithm="grasp"):
     best = None
     total_time = 0  # Initialize total time
 
     for i in range(iters):
         start_time = time.time()  # Start the timer
-        print("Iter " + str(i + 1) + ": ", end="")
+        # print("Iter " + str(i + 1) + ": ", end="")
         sol = cgrasp.construct(inst, alpha)
-        print("C -> " + str(round(sol['of'], 2)), end=", ")
-        lsbestimp.improve(sol)
-        print("LS -> " + str(round(sol['of'], 2)))
+        # print("C -> " + str(round(sol['of'], 2)), end=", ")
+        if algorithm == "tabu":
+            tabu_search.tabu_search(sol)
+        else:
+            lsbestimp.improve(sol)
+        # print("LS -> " + str(round(sol['of'], 2)))
         iter_time = time.time() - start_time  # Calculate iteration time
         total_time += iter_time  # Accumulate total time
 
@@ -21,7 +24,7 @@ def execute(inst, iters, alpha):
             best = sol
 
     avg_time = total_time / iters  # Calculate average time
-    print(f"\nAverage Execution Time per Iteration: {avg_time:.4f} seconds")
+    # print(f"\nAverage Execution Time per Iteration: {avg_time:.4f} seconds")
     return best
 
 def tune_alpha_random(inst, iters, num_samples):
